@@ -1,0 +1,15 @@
+{
+  "type": "service_account",
+  "project_id": "employee-management-app-b4343",
+  "private_key_id": "9d17abcc9cb8ff7a2f62f2f72fd0d39f440f4d6e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDYAiAxcMqdQYUn\n6adR+xEs86T9CgY7nnFzCtr621ZjsO/yErdNp/aYlhzI5hwQgtCfbcvUah4+D8VC\nUxWnJD5ynjejZYsacFLKI+0F/CJpTmCXv2IomtNng/SnCN/wGULvXgmGlTxZBXqR\n0jNdVn0y+Z6AeGCkHm0+Yd+Xf/NwcfDWa8tM4Lc6wzEzgl4EmE9A28bQ/rRGfrLl\ncSikNuJavo+oiE66PTdhRtUTz0mSWEnq5fgDI0zeEz9W69Va6+3GX82t4n42JzB/\nU8q45+On91RJbcGTgNClUc2I51wJT470edAiaLFQtqbVXzmNbEJxZQoiPWI4gz2X\nzstg7Z0dAgMBAAECggEAHcn9QpQ5fQJiKKTybD3hmn9nS3YsceBh6OmgVWQWP91Q\n2eN24AC/4z8gbRw+1pAT0UjFCWAxF4H5RDJNFCXNbuUe6yu/yT+gSzw1HdQtsrQa\nYhMEqHDhoq7x+G8i4uu47WXcjnDaR7SXuLByYPbigTsnfrQbL8b6bdX1jeEZY3Iy\nSVu0TWra7+rriKaWfHtD0HUqEoKja/RP9aSHZqUQmVn1+mFlRb/fSTafvvGargK9\nvGE1HP7SV/OtAtiBILpDfoqbGkHhr7CkV/VTvwdWVH/C/BlMUAWCXbXi1T+svtBB\nRnTd7SWk8tuBcGKRLNEe8neOldhdWPEQTk+XZ9H0wQKBgQD0oVlDan3nmGCZeYSU\n4eQWxYHeZU052PN0YHfV3BztXOmvQ1KvRBpFHBo6Rk3P0NH8uF1Sw1fTzJkGNBUl\nshYYudDTuP+G5zwJrh1CyWPPMbDsf599hYToVm8bdzuBcwniEsvAzzWcrRDlsffh\n1sFWllhfj8Ncooin3654I2FQSQKBgQDiDDpr+xvuqA3cOmmr0T+vDrnbg4XNoSjK\nGwZvwMfHmnO9xdCgVd7S+AUXukNl8IDtUHmIzihIquJf7SX/GqlpnlC6fAZfq04P\noWj1JWpvjzLDOZFMkkQf9dM2/mVhvUaFxerkC1K+vnyPzKw9upFvhXAABFDNv7fQ\n75bYKEQONQKBgGElujclkT5pquMH+PjPBC9u2/YfsJ1qZLQwoyZQtUQmA79QMwPb\nPbt4P4oo5TnEKb/8z0LQxI4d0B9Ai61enZvQHvgVnZRLO/J0LLabF4Hur94biJDm\ndzN1L8ZugTkVIDWhVT0KjLXdnLo7BL+w8zKZnhrFEsY03aQdFkIrerfRAoGBAIin\n49nL4UMSje6J0cBxrBJk0K+If6ekukgUtntxDFX7ZeVgZZPI1gCsuEdz77L9BrRx\nZkfyeiAUTu63K7VhpPGZKCzVNfU4VuTUK+OoTwRKieHEN7cW5eB8eMhSW3APQUc2\nM57RyaBPAHbewXJADBRjkyYvdbotIS9K6OKc1SfRAoGBALFhRVeCr5ZsqLNwCMDG\nqFBePJ5w+VDJwho4wbi06pBwrEYjg3UzZcj76Km5CySKUqqChn9RznW2scgcg14A\nmcSqVA5ehXHmg0jHzFDoBoAZuc+mlvcytEfAEsL8mOXsIWe1XqZKjmUy1K2hlAz3\n0UnEp+h88LS70kNIRS2LIIqH\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-g6ze1@employee-management-app-b4343.iam.gserviceaccount.com",
+  "client_id": "111270367615201713305",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-g6ze1%40employee-management-app-b4343.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
+
+  

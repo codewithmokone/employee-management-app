@@ -8,28 +8,27 @@
 <body>
     <header>
         <nav>
-            <a href="/" >Home</a>
-            <a href="/employeeslist" >View All Employees</a>
+            <a href="/" >View All Employees</a>
             <a href="/contact" >Contact Us</a>
         </nav>
     </header>
     <main>
         <h1>Add Employee</h1>
-        <form>
+        <form action="/addnew" method="post">
             <label>Name</label><br/>
-            <input type="text" id="name" required /><br/>
+            <input type="text" id="name" name="name" required /><br/>
             <label>Surname</label><br/>
-            <input type="text" id="surname" required /><br/>
+            <input type="text" id="surname" name="surname" required /><br/>
             <label>ID No.</label><br/>
-            <input type="number" id="id-number" required /><br/>
+            <input type="number" id="id-number" name="idNumber" /><br/>
             <label>Email Address</label><br/>
-            <input type="email" id="email-address" required /><br/>
+            <input type="email" id="email-address" name="email" required /><br/>
             <label>Employee Position</label><br/>
-            <input type="email" id="employee-position" required /><br/>
+            <input type="text" id="employee-position" name="employeePosition" required /><br/>
             <label>Phone number</label><br/>
-            <input type="number" id="phone-number" required /><br/>
+            <input type="number" id="phone-number" name="phoneNumber" required /><br/>
             <label>Image</label><br/>
-            <input type="file" id="file" required /><br/>
+            <input type="file" id="file" name="file" /><br/>
             <button>Add</button>
         </form>
     </main>

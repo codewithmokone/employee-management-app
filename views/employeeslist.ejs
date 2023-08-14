@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <nav>
-            <a href="/" >Add New Employee</a>
-            <a href="/contact" >Contact Us</a>
+            <a href="/addnew">Add New Employee</a>
+            <a href="/contact">Contact Us</a>
         </nav>
     </header>
     <main>
         <h1>View Employees Page</h1>
+        <% if(responseArray.length> 0 ){ %>
+            <% responseArray.map((results)=> { %>
+                <div class="employee-card">
+                    <div class="box">
+                        <div class="box-top">
+                            <img class="box-image" src="" alt="Girl Eating Pizza">
+                            <div class="title-flex">
+                                <h3 class="employee-name">
+                                    <%= results.name %>
+                                        <%= results.surname %>
+                                </h3>
+                                <p class="employee-position">
+                                    <%= results.employeePosition %>
+                                </p>
+                                <p class="employee-position">
+                                    <%= results.emailAddress %>
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="#" class="button">More details</a>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+                    <% }else {%>
+                        <h2>No employees added</h2>
+                        <% } %>
     </main>
     <footer></footer>
 </body>
+
 </html>

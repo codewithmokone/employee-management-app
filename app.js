@@ -66,12 +66,15 @@ app.post('/addnew', async(req, res) => {
         const employee = {
             name: req.body.name,
             surname: req.body.surname,
+            idNumber: req.body.idNumber,
             emailAddress: req.body.emailAddress,
             employeePosition: req.body.employeePosition,
             phoneNumber: req.body.phoneNumber
         }
-        const response = await db.collection('employees').add(employee);
-        res.render('index');
+
+        const response = await db.collection('employees').add(employee).then(()=>{
+            res.redirect("/")
+        })
         res.send(response)
         console.log('added')
     }catch (err){
@@ -126,8 +129,8 @@ app.put('/update/:id', (req, res) => {
     }
     db.collection('employees').doc(id).update(updateData)
     .then(()=>{
-        console.log('Employee Updated')
-        res.send('Empployee Updated')
+        // console.log('Employee Updated')
+        // res.send('Empployee Updated')
     }).catch((err) => {
         console.log(err)
         res.send(err)

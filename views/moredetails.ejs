@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/addnew">Update Employee</a>
+            <a href="/contact">Contact Us</a>
+        </nav>
+    </header>
+    <main>
+        <h1>View Employees Page</h1>
+        <% if(responseArray.length> 0 ){ %>
+            <% responseArray.map((results)=> { %>
+                <div class="form-container">
+                    <form action="/addnew" method="post" class="w-50">
+                        <label class="form-label">Name</label><br />
+                        <input type="text" id="name" name="name" class="form-control" required /><br />
+                        <label class="form-label">Surname</label><br />
+                        <input type="text" id="surname" name="surname" class="form-control" required /><br />
+                        <label class="form-label">ID No.</label><br />
+                        <input type="number" id="id-number" class="form-control" name="idNumber" /><br />
+                        <label class="form-label">Email Address</label><br />
+                        <input type="email" id="emailAddress" name="emailAddress" class="form-control" required /><br />
+                        <label class="form-label"></label>Employee Position</label><br />
+                        <input type="text" id="employeePosition" name="employeePosition" class="form-control"
+                            required /><br />
+                        <label>Phone number</label><br />
+                        <input type="number" id="phoneNumber" name="phoneNumber" class="form-control" required /><br />
+                        <label>Image</label><br />
+                        <input type="file" id="file" name="file" /><br />
+                        <button class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+                <div>
+                    <a href="#" class="button">Update</a>
+                    <a href="#" class="button" onclick="handleDelete(<%= JSON.stringify(results) %>)"
+                        data-doc=<%=results.id %>>Delete</a>
+                </div>
+                <% }) %>
+                    <% }else {%>
+                        <h2>No employees added</h2>
+                        <% } %>
+    </main>
+    <footer></footer>
+    <script>
+
+        function handleUpdate() {
+
+        }
+
+        function handleDelete(results) {
+            console.log(results)
+
+            const endpoint = `delete/${results.id}`;
+            fetch(endpoint, {
+                method: 'DELETE'
+            }).then(() => {
+                console.log('DELETED')
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
+    </script>
+</body>
+
+</html>

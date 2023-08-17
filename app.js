@@ -4,8 +4,18 @@ const multer = require('multer');
 
 const path = require('path');
 
-const { db, storage } = require('./firebase')
+const admin = require('firebase-admin');
 
+const serviceAccount = require('./key.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: "employee-management-app-b4343.appspot.com",
+  databaseURL: 'https://employee-management-app-b4343.firebaseio.com',
+});
+
+
+const db = admin.firestore();
 
 // Express app
 const app = express();
@@ -64,6 +74,19 @@ app.post('/addnew', upload.single('image'), async (req, res) => {
     console.log(req.file);
 
     try {
+
+        const bucket = admin.storage().bucket();
+        const file = bucket.file(req.file.originalname);
+        const result = await file.createWriteStream().end(req.file.buffer);
+        const downloadUrl = await file.getSignedUrl({
+            action: 'read',
+            expires: '03-17-2025'
+        });
+
+        const imgJson = {
+            imageUrl: downloadUrl[0]
+        }
+
         const employee = {
             name: req.body.name,
             surname: req.body.surname,
@@ -71,12 +94,13 @@ app.post('/addnew', upload.single('image'), async (req, res) => {
             emailAddress: req.body.emailAddress,
             employeePosition: req.body.employeePosition,
             phoneNumber: req.body.phoneNumber,
-            // image: downloadUrl[0]
+            image: downloadUrl[0]
         }
         const response = await db.collection('employees').add(employee).then(() => {
             console.log('added')
             res.redirect("/")
         })
+        // res.send(response);
     } catch (err) {
         console.log(err)
     }
@@ -85,7 +109,6 @@ app.post('/addnew', upload.single('image'), async (req, res) => {
 app.get('/addnew', (req, res) => {
     res.render('index');
 })
-
 
 // Reading data from firestore database
 app.get('/', async (req, res) => {

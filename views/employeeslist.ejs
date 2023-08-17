@@ -10,7 +10,7 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
-    <title>Document</title>
+    <title>View All Employees</title>
 </head>
 
 <body>
@@ -31,7 +31,9 @@
                         <div class="employee-card">
                             <div class="box">
                                 <div class="box-top">
-                                    <img class="box-image" src="<%= results.image %>" alt="Girl Eating Pizza">
+                                    <div class="image-div">
+                                        <img class="box-image" src="<%= results.image %>" alt="image" />
+                                    </div>
                                     <div class="title-flex">
                                         <h4 class="employee-name">
                                             <%= results.name %>
@@ -86,7 +88,9 @@
                         </div>
                     <% }) %>
                 <%}else {%>
-                    <h2>No employees added</h2>
+                    <div class="no-list">
+                        <h2>No employees added</h2>
+                    </div>
                 <% } %>
             </div>
            
@@ -107,7 +111,7 @@
             document.getElementById('emailAddress').value = results.emailAddress;
             document.getElementById('employeePosition').value = results.employeePosition;
             document.getElementById('phoneNumber').value = results.phoneNumber
-            document.getElementById('image').value = results.image
+            // document.getElementById('image').value = results.image
         }
 
 
@@ -136,8 +140,6 @@
                 }).catch((error) => {
                     console.log(error)
                 })
-
-                console.log(res.id)
             })
         }
 
@@ -155,7 +157,6 @@
                 console.log(error)
             })
         }
-
 
         // Hides the popup
         function hidePopup() {

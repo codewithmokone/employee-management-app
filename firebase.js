@@ -4,8 +4,8 @@ const serviceAccount = require('./key.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: 'gs://employee-management-app-b4343.appspot.com/images',
-  databaseURL: 'https://your-project-id.firebaseio.com',
+  storageBucket: "employee-management-app-b4343.appspot.com",
+  databaseURL: 'https://employee-management-app-b4343.firebaseio.com',
 });
 
 const db = admin.firestore();

@@ -11,7 +11,6 @@ const serviceAccount = require('./key.json');
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   storageBucket: "employee-management-app-b4343.appspot.com",
-  databaseURL: 'https://employee-management-app-b4343.firebaseio.com',
 });
 
 
@@ -100,7 +99,7 @@ app.post('/addnew', upload.single('image'), async (req, res) => {
             console.log('added')
             res.redirect("/")
         })
-        // res.send(response);
+        res.send(response);
     } catch (err) {
         console.log(err)
     }
@@ -131,8 +130,9 @@ app.get('/', async (req, res) => {
 app.delete('/delete/:id', async (req, res) => {
     try {
         const response = await db.collection('employees').doc(req.params.id).delete();
-        res.send(response)
+        // res.send(response)
         console.log("Employee Deleted")
+        res.redirect('/')
     } catch (err) {
         console.log(err)
         res.send(err)
@@ -155,7 +155,8 @@ app.put('/update/:id', (req, res) => {
     db.collection('employees').doc(id).update(updateData)
         .then(() => {
             // console.log('Employee Updated')
-            // res.send('Empployee Updated')
+            Alert('Empployee Updated')
+           res.redirect('/')
         }).catch((err) => {
             console.log(err)
             res.send(err)

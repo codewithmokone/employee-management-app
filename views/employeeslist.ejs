@@ -26,7 +26,7 @@
                 <h3>View Employees Page</h3>
             </div>
             <div class="card-list">
-                <% if(responseArray.length > 0 ){ %>
+                <% if(responseArray.length> 0 ){ %>
                     <% responseArray.map((results)=> { %>
                         <div class="employee-card">
                             <div class="box">
@@ -58,42 +58,47 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="popup-form">
-                            <div class="form-container">
-                                <form id="update-form" class="w-50">
-                                    <h4 class="update-heading">Update Employee</h4>
-                                    <label class="form-label">Name</label><br />
-                                    <input type="text" id="name" name="name" class="form-control" required /><br />
-                                    <label class="form-label">Surname</label><br />
-                                    <input type="text" id="surname" name="surname" class="form-control" required /><br />
-                                    <label class="form-label">ID No.</label><br />
-                                    <input type="number" id="idNumber" class="form-control" name="idNumber" required /><br />
-                                    <label class="form-label">Email Address</label><br />
-                                    <input type="email" id="emailAddress" name="emailAddress" class="form-control" required /><br />
-                                    <label class="form-label"></label>Employee Position</label><br />
-                                    <input type="text" id="employeePosition" name="employeePosition" class="form-control"
-                                        required /><br />
-                                    <label>Phone number</label><br />
-                                    <input type="number" id="phoneNumber" name="phoneNumber" class="form-control" required /><br />
-                                    <label>Image</label><br />
-                                    <input type="file" id="file" name="file" /><br />
-                                    <div class="update-btns">
-                                        <button class="btn btn-primary" type="submit" onclick="handleUpdate(<%= JSON.stringify(results) %>)">Update</button>
-                                        <button class="btn btn-danger"onclick="handleDelete(<%= JSON.stringify(results) %>)"
-                                            data-doc=<%=results.id %>>Delete</button>
-                                        <button class="btn btn-dark" onclick="hidePopup()">Close</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    <% }) %>
-                <%}else {%>
-                    <div class="no-list">
-                        <h2>No employees added</h2>
-                    </div>
-                <% } %>
+                        <% }) %>
+                            <%}else {%>
+                                <div class="no-list">
+                                    <h2>No employees added</h2>
+                                </div>
+                                <% } %>
             </div>
-           
+            <div id="popup-form">
+                <div class="form-container">
+                    <form id="update-form" method="put" class="w-50">
+                        <h4 class="update-heading">Update Employee</h4>
+                        <label class="form-label">Name</label><br />
+                        <input type="text" id="name" name="name" class="form-control" required /><br />
+                        <label class="form-label">Surname</label><br />
+                        <input type="text" id="surname" name="surname" class="form-control"
+                            required /><br />
+                        <label class="form-label">ID No.</label><br />
+                        <input type="number" id="idNumber" class="form-control" name="idNumber"
+                            required /><br />
+                        <label class="form-label">Email Address</label><br />
+                        <input type="email" id="emailAddress" name="emailAddress" class="form-control"
+                            required /><br />
+                        <label class="form-label"></label>Employee Position</label><br />
+                        <input type="text" id="employeePosition" name="employeePosition"
+                            class="form-control" required /><br />
+                        <label>Phone number</label><br />
+                        <input type="number" id="phoneNumber" name="phoneNumber" class="form-control"
+                            required /><br />
+                        <label>Image</label><br />
+                        <input type="file" id="file" name="file" /><br />
+                        <div class="update-btns">
+                            <button class="btn btn-primary" type="submit" id="update-btn" data-id=""
+                                onclick="handleUpdate()">Update</button>
+                            <button class="btn btn-danger" id="delete-btn" data-id=""
+                                onclick="handleDelete()"
+                            >Delete</button>
+                            <button class="btn btn-dark" onclick="hidePopup()">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </main>
         <footer>
         </footer>
@@ -104,6 +109,10 @@
         // Handles the edit function
         function handleEdit(results) {
             document.getElementById('popup-form').style.display = 'flex';
+
+            document.getElementById('update-btn').dataset.id = results.id;
+
+            document.getElementById('delete-btn').dataset.id = results.id;
 
             document.getElementById('name').value = results.name;
             document.getElementById('surname').value = results.surname;
@@ -116,9 +125,10 @@
 
 
         // Handles the update function
-        function handleUpdate(res) {
+        function handleUpdate() {
 
-            document.getElementById('update-form').addEventListener('submit', () => {
+            document.getElementById('update-form').addEventListener('submit', (e) => {
+                e.preventDefault()
 
                 const name = document.getElementById('name').value
                 const surname = document.getElementById('surname').value
@@ -130,25 +140,36 @@
 
                 const data = { name, surname, idNumber, emailAddress, employeePosition, phoneNumber }
 
-                const endpoint = `update/${res.id}`;
+                console.log(data)
+
+                const endpoint = `update/${document.getElementById('update-btn').dataset.id}`;
                 fetch(endpoint, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 }).then(response => response.json()).then((data) => {
-                    console.log("Employee Updated", data)
+
+                    document.getElementById('name').value = "";
+                    document.getElementById('surname').value = "";
+                    document.getElementById('idNumber').value = "";
+                    document.getElementById('emailAddress').value = "";
+                    document.getElementById('employeePosition').value = "";
+                    document.getElementById('phoneNumber').value = ""
+
+                    window.location.reload();
+                    document.getElementById('popup-form').style.display = 'none';
+
                 }).catch((error) => {
                     console.log(error)
                 })
             })
         }
 
-        
+
         // Handles the delete function
         function handleDelete(results) {
-            console.log(results)
 
-            const endpoint = `delete/${results.id}`;
+            const endpoint = `delete/${document.getElementById('delete-btn').dataset.id}`;
             fetch(endpoint, {
                 method: 'DELETE'
             }).then(() => {
